@@ -4,7 +4,7 @@ import { PersonalInfoSection } from "@/components/profile/PersonalInfoSection";
 import { ContactTrustSection } from "@/components/profile/ContactTrustSection";
 import { LifestyleSection } from "@/components/profile/LifestyleSection";
 import { MyListingsSection } from "@/components/profile/MyListingsSection";
-import { BottomNav } from "@/components/profile/BottomNav";
+import { BottomNav } from "@/components/bottom-nav";
 
 export default function ProfilePage() {
   return (

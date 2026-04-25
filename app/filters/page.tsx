@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation" // 1. Імпорт
 import { useState } from "react"
 import { ChevronLeft, MapPin, Search } from "lucide-react"
 import { Switch } from "@/components/ui/switch"
@@ -48,14 +49,14 @@ export default function FiltersPage() {
     setSelectedAges([])
     setSelectedGender("Будь-хто")
   }
+const router = useRouter() // 2. Ініціалізація
 
   return (
     <div className="min-h-screen bg-sky-50 font-sans">
-      {/* Scrollable content with bottom padding to clear fixed footer */}
       <div className="max-w-md mx-auto px-4 pb-28">
-        {/* Header */}
         <header className="flex items-center gap-4 pt-5 mb-8">
           <button
+            onClick={() => router.back()} // 3. Обробник кліку
             className="flex items-center justify-center w-10 h-10 rounded-2xl bg-white shadow-sm text-slate-600 hover:bg-slate-50 transition-colors"
             aria-label="Назад"
           >
@@ -63,7 +64,7 @@ export default function FiltersPage() {
           </button>
           <h1 className="text-xl font-bold text-slate-900">Фільтри</h1>
         </header>
-
+        {/* ... решта коду */}
         <div className="space-y-8">
           {/* ── ЛОКАЦІЯ ── */}
           <section>
@@ -218,22 +219,23 @@ export default function FiltersPage() {
       </div>
 
       {/* ── STICKY BOTTOM ACTIONS ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-30">
-        <div className="max-w-md mx-auto bg-white/90 backdrop-blur-md border-t border-slate-100 p-4 flex gap-3">
-          <button
-            onClick={handleReset}
-            className="flex-1 py-3.5 rounded-2xl bg-slate-100 text-slate-600 font-semibold text-sm hover:bg-slate-200 transition-colors"
-          >
-            Скинути
-          </button>
-          <button
-            className="flex-[2] py-3.5 rounded-2xl bg-sky-500 text-white font-bold text-sm hover:bg-sky-600 transition-colors shadow-sm"
-          >
-            Застосувати
-          </button>
-        </div>
-      </div>
-    </div>
+<div className="fixed bottom-0 left-0 right-0 z-30">
+  <div className="max-w-md mx-auto bg-white/90 backdrop-blur-md border-t border-slate-100 p-4 flex gap-3">
+    <button
+      onClick={handleReset}
+      className="flex-1 py-3.5 rounded-2xl bg-slate-100 text-slate-600 font-semibold text-sm hover:bg-slate-200 transition-colors"
+    >
+      Скинути
+    </button>
+    <button
+      onClick={() => router.push("/search")} // Додаємо цей рядок
+      className="flex-[2] py-3.5 rounded-2xl bg-sky-500 text-white font-bold text-sm hover:bg-sky-600 transition-colors shadow-sm"
+    >
+      Застосувати
+    </button>
+  </div>
+</div>
+</div>
   )
 }
 

@@ -1,6 +1,6 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Search, Bookmark, MessageCircle, User } from "lucide-react"
-
+import { BottomNav } from "@/components/bottom-nav"
 interface ChatCardProps {
   name: string
   avatar: string
@@ -135,25 +135,7 @@ export default function ChatListPage() {
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 flex justify-between items-center border-t border-slate-200 bg-white px-8 py-3 h-16">
-        <NavItem
-          icon={<Search className="size-6" />}
-          label="Пошук"
-        />
-        <NavItem
-          icon={<Bookmark className="size-6" />}
-          label="Збережене"
-        />
-        <NavItem
-          icon={<MessageCircle className="size-6" />}
-          label="Повідомлення"
-          isActive
-        />
-        <NavItem
-          icon={<User className="size-6" />}
-          label="Профіль"
-        />
-      </nav>
+      <BottomNav />
     </div>
   )
 }

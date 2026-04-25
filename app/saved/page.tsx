@@ -3,7 +3,7 @@
 import { Heart, MapPin, CircleCheck, Search, MessageCircle, User } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
-
+import { BottomNav } from "@/components/bottom-nav"
 interface ListingCard {
   id: string
   title: string
@@ -194,31 +194,7 @@ export default function SavedListings() {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex justify-between px-8 py-3">
-        {navItems.map((item) => {
-          const Icon = item.icon
-          const isActive = item.active
-          return (
-            <button
-              key={item.key}
-              className="flex flex-col items-center gap-1 hover:opacity-70 transition-opacity"
-            >
-              <Icon
-                className={`w-6 h-6 ${
-                  isActive ? 'text-sky-500' : 'text-slate-400'
-                }`}
-              />
-              <span
-                className={`text-xs font-medium ${
-                  isActive ? 'text-sky-500' : 'text-slate-600'
-                }`}
-              >
-                {item.label}
-              </span>
-            </button>
-          )
-        })}
-      </div>
+      <BottomNav/>
     </div>
   )
 }
