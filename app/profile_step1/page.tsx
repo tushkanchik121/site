@@ -2,13 +2,13 @@
 
 import { useState } from "react"
 import { ChevronLeft, Plus, User } from "lucide-react"
-
+import { useRouter } from "next/navigation"
 export default function ProfileSetupPage() {
   const [gender, setGender] = useState<"female" | "male">("female")
   const [name, setName] = useState("")
   const [age, setAge] = useState("")
   const [about, setAbout] = useState("")
-
+  const router = useRouter()
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Scrollable content */}
@@ -125,11 +125,14 @@ export default function ProfileSetupPage() {
       </div>
 
       {/* Sticky Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 px-4 py-4 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
-        <button className="w-full rounded-2xl bg-sky-500 py-4 text-base font-semibold text-white hover:bg-sky-600 active:scale-[0.98] transition-all">
-          Продовжити
-        </button>
-      </div>
+      <div className="fixed bottom-0 left-0 right-0 ...">
+      <button 
+        onClick={() => router.push('/lifestyle')} // 3. Додаємо перехід
+        className="w-full ... bg-sky-500 text-white ..."
+      >
+        Продовжити
+      </button>
+    </div>
     </div>
   )
 }

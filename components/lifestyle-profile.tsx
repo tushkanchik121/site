@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ChevronLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useRouter } from "next/navigation"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -15,6 +16,7 @@ interface SectionLabelProps {
   children: React.ReactNode
 }
 function SectionLabel({ children }: SectionLabelProps) {
+  
   return (
     <p className="text-sm font-semibold text-slate-700 mb-3">{children}</p>
   )
@@ -27,6 +29,7 @@ interface SingleChoiceGroupProps {
   onChange: (name: string, value: string) => void
 }
 function SingleChoiceGroup({ name, options, value, onChange }: SingleChoiceGroupProps) {
+  const router = useRouter()
   return (
     <div className="flex flex-wrap gap-2">
       {options.map((option) => {
@@ -47,6 +50,7 @@ function SingleChoiceGroup({ name, options, value, onChange }: SingleChoiceGroup
           </button>
         )
       })}
+      
     </div>
   )
 }
@@ -115,7 +119,7 @@ export default function LifestyleProfile() {
   function handleSave() {
     console.log("[v0] Lifestyle profile saved:", { single, multi })
   }
-
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Scrollable content */}
@@ -224,11 +228,12 @@ export default function LifestyleProfile() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 px-4 py-4">
         <button
           type="button"
-          onClick={handleSave}
+          onClick={() => router.push('/verification')} 
           className="w-full bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white text-base font-semibold rounded-2xl py-4 transition-colors duration-150"
         >
           Зберегти та продовжити
         </button>
+        
       </div>
     </div>
   )

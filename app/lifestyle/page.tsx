@@ -1,7 +1,23 @@
 "use client"
 
 import LifestyleProfile from "@/components/lifestyle-profile"
-
+import { useRouter } from "next/navigation"
 export default function Page() {
-  return <LifestyleProfile />
+const router = useRouter()
+
+  return (
+    // ... код вашої анкети
+    <div>
+      
+    <button 
+      onClick={() => router.push('/verification')} 
+      className="..."
+    >
+      Продовжити
+    </button>
+    <LifestyleProfile />
+    </div>
+    
+    
+  );
 }

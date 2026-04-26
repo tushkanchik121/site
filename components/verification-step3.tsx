@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ShieldCheck, Smartphone, CheckCircle2 } from "lucide-react";
-
+import { useRouter } from "next/navigation";
 export default function VerificationStep3() {
   const [phone, setPhone] = useState("");
   const [smsSent, setSmsSent] = useState(false);
@@ -24,6 +24,7 @@ export default function VerificationStep3() {
   }
 
   function formatPhone(value: string) {
+    
     const digits = value.replace(/\D/g, "").slice(0, 12);
     if (digits.length === 0) return "";
     if (digits.startsWith("380")) {
@@ -38,7 +39,7 @@ export default function VerificationStep3() {
     }
     return "+" + digits;
   }
-
+const router = useRouter();
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Scrollable content area */}
@@ -214,6 +215,8 @@ export default function VerificationStep3() {
                 ? "bg-primary text-white hover:opacity-90 active:scale-[0.98]"
                 : "bg-gray-200 text-gray-400 cursor-not-allowed",
             ].join(" ")}
+                  onClick={() => router.push('/')} // Перехід на головну (пошук)
+
           >
             Завершити реєстрацію
           </button>

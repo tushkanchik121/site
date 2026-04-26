@@ -20,6 +20,7 @@ export function ProfileHeader() {
       >
         <ChevronLeft size={24} />
       </button>
+      
       <h1 className="text-xl font-bold text-slate-900">Мій профіль</h1>
     </div>
     </div>
